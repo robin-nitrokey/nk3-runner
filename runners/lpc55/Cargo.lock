@@ -35,11 +35,10 @@ dependencies = [
 [[package]]
 name = "apdu-dispatch"
 version = "0.0.1"
-source = "git+https://github.com/solokeys/apdu-dispatch?branch=main#4ae64d8733ba3407f3b92e5ebba6be7c56a4f5bf"
+source = "git+https://github.com/solokeys/apdu-dispatch?branch=main#a5b78b7cc9466729899169cc3f6515d44c66c4fd"
 dependencies = [
  "delog",
- "heapless 0.6.1",
- "heapless-bytes",
+ "heapless 0.7.0",
  "interchange",
  "iso7816",
 ]
@@ -193,13 +192,13 @@ dependencies = [
 
 [[package]]
 name = "cbor-smol"
-version = "0.3.1"
+version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1bd3efb1a3d72f0fd9c62b81794c8e61967b6d991c26afcdf30069b385d5195c"
+checksum = "d516e3e353d5fc5ee156028f43224033430fd08ef05f8d5dba18a57a4ee5df49"
 dependencies = [
  "delog",
- "heapless 0.6.1",
- "heapless-bytes",
+ "heapless 0.7.0",
+ "heapless-bytes 0.3.0",
  "serde",
 ]
 
@@ -317,7 +316,18 @@ version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "dae70ebe61c8f9b022729efe68ed35d9330631edd39d873de975083deb4c74f8"
 dependencies = [
- "heapless-bytes",
+ "heapless-bytes 0.2.0",
+ "serde",
+ "serde_repr",
+]
+
+[[package]]
+name = "cosey"
+version = "0.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bb743c2c58b69b970e02f5ba7f552f75fcfc8393768e3ae4316e055aabacfdaa"
+dependencies = [
+ "heapless-bytes 0.3.0",
  "serde",
  "serde_repr",
 ]
@@ -352,16 +362,26 @@ dependencies = [
 ]
 
 [[package]]
+name = "cstr_core"
+version = "0.2.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2807c5e92588b6bf1c8c0354af2a4f079d0586c683df322aea719d5dc9b8d5bb"
+dependencies = [
+ "cty 0.2.1",
+ "memchr 2.4.0",
+]
+
+[[package]]
 name = "ctap-types"
 version = "0.1.0"
-source = "git+https://github.com/solokeys/ctap-types?branch=main#3c44faeba5975e700128243b4aa9977653e1e6bb"
+source = "git+https://github.com/solokeys/ctap-types?branch=main#fa46d6be22109664c598a61cbe7d84581fa93292"
 dependencies = [
  "bitflags",
  "cbor-smol",
- "cosey",
+ "cosey 0.3.0",
  "delog",
- "heapless 0.6.1",
- "heapless-bytes",
+ "heapless 0.7.0",
+ "heapless-bytes 0.3.0",
  "interchange",
  "iso7816",
  "serde",
@@ -374,8 +394,8 @@ name = "ctaphid-dispatch"
 version = "0.0.1"
 dependencies = [
  "delog",
- "heapless 0.6.1",
- "heapless-bytes",
+ "heapless 0.7.0",
+ "heapless-bytes 0.3.0",
  "interchange",
 ]
 
@@ -474,7 +494,7 @@ dependencies = [
  "delog",
  "fido-authenticator",
  "heapless 0.6.1",
- "heapless-bytes",
+ "heapless-bytes 0.3.0",
  "interchange",
  "iso7816",
  "serde",
@@ -520,9 +540,9 @@ dependencies = [
 
 [[package]]
 name = "embedded-time"
-version = "0.10.1"
+version = "0.12.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f85ab0d224a6c70f11426a9f04d5f26d250605b80df8fbed197e49d4454f58d7"
+checksum = "86fbafcea0dea120d8ed8af67ddbf82afc031f1d3b064920645db8d061781e2c"
 dependencies = [
  "num",
 ]
@@ -541,13 +561,13 @@ dependencies = [
 [[package]]
 name = "fido-authenticator"
 version = "0.0.0-unreleased"
-source = "git+https://github.com/solokeys/fido-authenticator?branch=main#7513d7dbe15ef2e95a7d5e252a6da263d7c56b45"
+source = "git+https://github.com/solokeys/fido-authenticator?branch=main#6955311ae0df56b729a8522b49dfabf1b8691baa"
 dependencies = [
  "ctap-types",
  "delog",
- "heapless 0.6.1",
+ "heapless 0.7.0",
  "interchange",
- "littlefs2",
+ "littlefs2 0.3.1",
  "serde",
  "serde-indexed",
  "serde_cbor",
@@ -557,17 +577,17 @@ dependencies = [
 [[package]]
 name = "flexiber"
 version = "0.1.0"
-source = "git+https://github.com/nickray/flexiber?branch=main#146438c2d6e4ecc355d1318c58d36abd92e50a1c"
+source = "git+https://github.com/nickray/flexiber?branch=main#9010bb0d8c3181f98cee19815e261602d3dbcfcc"
 dependencies = [
  "delog",
  "flexiber_derive",
- "heapless 0.6.1",
+ "heapless 0.7.0",
 ]
 
 [[package]]
 name = "flexiber_derive"
 version = "0.1.0"
-source = "git+https://github.com/nickray/flexiber?branch=main#146438c2d6e4ecc355d1318c58d36abd92e50a1c"
+source = "git+https://github.com/nickray/flexiber?branch=main#9010bb0d8c3181f98cee19815e261602d3dbcfcc"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -676,7 +696,6 @@ dependencies = [
  "as-slice",
  "generic-array 0.14.4",
  "hash32 0.1.1",
- "serde",
  "stable_deref_trait",
 ]
 
@@ -688,6 +707,7 @@ checksum = "e94c13b78b595d2adbd708bce276664f1047f98fc32ddbf463b4c191158334a6"
 dependencies = [
  "atomic-polyfill",
  "hash32 0.2.1",
+ "serde",
  "stable_deref_trait",
 ]
 
@@ -698,6 +718,17 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1729797499905912c3e4d6d20d5981720da157a27b834531d721905fb8a9b48a"
 dependencies = [
  "heapless 0.6.1",
+ "serde",
+ "typenum",
+]
+
+[[package]]
+name = "heapless-bytes"
+version = "0.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7285eba272c6af3e9f15fb9e1c1b6e7d35aa70580ffe0d47af017e97dfb6f48b"
+dependencies = [
+ "heapless 0.7.0",
  "serde",
  "serde_cbor",
  "typenum",
@@ -737,11 +768,11 @@ checksum = "65d9ab155e6b8e53ae742a06a850b2645e333d40d89ef2e28f190763742d768c"
 
 [[package]]
 name = "iso7816"
-version = "0.1.0-alpha.0"
-source = "git+https://github.com/ycrypto/iso7816?branch=main#e2dae292be70a4138e8bae6290c4022562ce1740"
+version = "0.1.0-alpha.1"
+source = "git+https://github.com/ycrypto/iso7816?branch=main#b2350f41ea44f90c69cdde94ead869be017b844c"
 dependencies = [
- "heapless 0.6.1",
- "heapless-bytes",
+ "delog",
+ "heapless 0.7.0",
 ]
 
 [[package]]
@@ -769,11 +800,27 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "afff86468434d8fbe845f21852f11bda6fed25cf85c6469cc798063f1458b286"
 dependencies = [
  "bitflags",
- "cstr_core",
+ "cstr_core 0.1.0",
  "cty 0.2.1",
  "delog",
  "generic-array 0.14.4",
  "heapless 0.6.1",
+ "littlefs2-sys",
+ "serde",
+]
+
+[[package]]
+name = "littlefs2"
+version = "0.3.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e40cb431400d5ead0b069b6f2f535fabef475fc095fe721664321f7d978dacc6"
+dependencies = [
+ "bitflags",
+ "cstr_core 0.2.3",
+ "cty 0.2.1",
+ "delog",
+ "generic-array 0.14.4",
+ "heapless 0.7.0",
  "littlefs2-sys",
  "serde",
 ]
@@ -800,9 +847,9 @@ dependencies = [
 
 [[package]]
 name = "lpc55-hal"
-version = "0.2.1"
+version = "0.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "365d7e0d8615db5183d79b504653eb13d95694ab1e59ef98d510c0aa30906823"
+checksum = "0a950e42b2406d999ec325764196344fc3d9fca48c19aee71be1e43980b45182"
 dependencies = [
  "block-buffer",
  "cipher",
@@ -811,7 +858,7 @@ dependencies = [
  "embedded-hal",
  "embedded-time",
  "generic-array 0.14.4",
- "littlefs2",
+ "littlefs2 0.3.1",
  "lpc55-pac",
  "lpc55-rtic",
  "nb 1.0.0",
@@ -901,8 +948,7 @@ name = "ndef-app"
 version = "0.1.0"
 dependencies = [
  "apdu-dispatch",
- "heapless 0.6.1",
- "heapless-bytes",
+ "heapless 0.7.0",
  "iso7816",
 ]
 
@@ -913,8 +959,7 @@ dependencies = [
  "apdu-dispatch",
  "delog",
  "embedded-time",
- "heapless 0.6.1",
- "heapless-bytes",
+ "heapless 0.7.0",
  "interchange",
  "iso7816",
  "nb 1.0.0",
@@ -926,9 +971,9 @@ version = "0.1.0-alpha.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a50765b4bf261cc343bc5eede18fcd48d1fbe0e5e9352f43a9d0423ddae3ef30"
 dependencies = [
- "cosey",
+ "cosey 0.2.0",
  "der 0.2.10",
- "heapless-bytes",
+ "heapless-bytes 0.2.0",
  "micro-ecc-sys",
  "sha2",
 ]
@@ -1009,13 +1054,13 @@ dependencies = [
 [[package]]
 name = "oath-authenticator"
 version = "0.0.0-pre"
-source = "git+https://github.com/trussed-dev/oath-authenticator?branch=main#9e58709a581a20693fcca751aca06155703e3191"
+source = "git+https://github.com/trussed-dev/oath-authenticator?branch=main#716cbd2f4be397ce90fbef2db1eff06968d87dc7"
 dependencies = [
  "apdu-dispatch",
  "delog",
  "flexiber",
- "heapless 0.6.1",
- "heapless-bytes",
+ "heapless 0.7.0",
+ "heapless-bytes 0.3.0",
  "hex-literal",
  "interchange",
  "iso7816",
@@ -1082,13 +1127,12 @@ checksum = "19b17cddbe7ec3f8bc800887bab5e717348c95ea2ca0b1bf0837fb964dc67099"
 [[package]]
 name = "piv-authenticator"
 version = "0.0.0-unreleased"
-source = "git+https://github.com/solokeys/piv-authenticator?branch=main#edac42a7ad35fa4ce9c6eac639fdf66a292452b1"
+source = "git+https://github.com/solokeys/piv-authenticator?branch=main#8bdee0d35e4291c6e00e67cdb33d492c4cfc0500"
 dependencies = [
  "apdu-dispatch",
  "delog",
  "flexiber",
- "heapless 0.6.1",
- "heapless-bytes",
+ "heapless 0.7.0",
  "hex-literal",
  "interchange",
  "iso7816",
@@ -1110,11 +1154,11 @@ dependencies = [
 
 [[package]]
 name = "postcard"
-version = "0.6.1"
+version = "0.7.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "66acf3cf8ab62785852a0f67ae3bfcd38324da6561e52e7f4a049ca555c6d55e"
+checksum = "9083a4e478606d952014ad10e2fad31c43030942cec1f2bf8f12d4cc7089e62d"
 dependencies = [
- "heapless 0.6.1",
+ "heapless 0.7.0",
  "postcard-cobs",
  "serde",
 ]
@@ -1141,8 +1185,8 @@ dependencies = [
  "apdu-dispatch",
  "delog",
  "heapless 0.6.1",
- "heapless-bytes",
- "littlefs2",
+ "heapless-bytes 0.3.0",
+ "littlefs2 0.2.2",
  "lpc55-hal",
  "nisty",
  "salty",
@@ -1235,7 +1279,7 @@ dependencies = [
  "fm11nc08",
  "heapless 0.6.1",
  "interchange",
- "littlefs2",
+ "littlefs2 0.3.1",
  "lpc55-rtic",
  "nb 1.0.0",
  "ndef-app",
@@ -1269,10 +1313,10 @@ dependencies = [
 
 [[package]]
 name = "salty"
-version = "0.2.0-alpha.1"
-source = "git+https://github.com/ycrypto/salty?branch=main#2e03f95880aa003270abca90259beb15b8f030c8"
+version = "0.2.0-alpha.2"
+source = "git+https://github.com/ycrypto/salty?branch=main#828db52b951a3642760a58ee2be3011c8797c5fe"
 dependencies = [
- "cosey",
+ "cosey 0.3.0",
  "subtle",
  "zeroize",
 ]
@@ -1430,7 +1474,7 @@ checksum = "55937e1799185b12863d447f42597ed69d9928686b8d88a1df17376a097d8369"
 [[package]]
 name = "trussed"
 version = "0.1.0"
-source = "git+https://github.com/trussed-dev/trussed?branch=main#c02ecc48c821614892971ebf0905701ca6f9bdb7"
+source = "git+https://github.com/trussed-dev/trussed?branch=main#817a9e71db5f9654d66024acf3560508078d63d5"
 dependencies = [
  "aes",
  "bitflags",
@@ -1439,18 +1483,18 @@ dependencies = [
  "cfg-if",
  "chacha20",
  "chacha20poly1305",
- "cosey",
+ "cosey 0.3.0",
  "delog",
  "des",
  "embedded-hal",
  "flexiber",
  "generic-array 0.14.4",
- "heapless 0.6.1",
- "heapless-bytes",
+ "heapless 0.7.0",
+ "heapless-bytes 0.3.0",
  "hex-literal",
  "hmac",
  "interchange",
- "littlefs2",
+ "littlefs2 0.3.1",
  "nb 1.0.0",
  "p256-cortex-m4",
  "postcard",
@@ -1509,8 +1553,7 @@ version = "0.0.0-unreleased"
 dependencies = [
  "delog",
  "embedded-time",
- "heapless 0.6.1",
- "heapless-bytes",
+ "heapless 0.7.0",
  "interchange",
  "iso7816",
  "usb-device",
@@ -1524,8 +1567,8 @@ dependencies = [
  "ctaphid-dispatch",
  "delog",
  "embedded-time",
- "heapless 0.6.1",
- "heapless-bytes",
+ "heapless 0.7.0",
+ "heapless-bytes 0.3.0",
  "interchange",
  "serde",
  "usb-device",
