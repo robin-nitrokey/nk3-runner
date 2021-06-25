@@ -1,0 +1,3 @@
+[submodule "solo2"]
+	path = solo2
+	url = https://github.com/solokeys/solo2

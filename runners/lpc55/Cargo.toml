@@ -1,0 +1,120 @@
+# cargo-features = ["resolver"]
+
+[package]
+name = "runner"
+version = "0.1.1"
+authors = ["Nicolas Stalder <n@stalder.io>", "Conor Patrick <conor@solokeys.com>"]
+edition = "2018"
+# resolver = "2"
+
+[lib]
+name = "runner"
+
+[[bin]]
+name = "runner"
+path = "src/main.rs"
+
+[dependencies]
+lpc55-rtic = "0.5.7"
+cortex-m-semihosting = {version = "0.3.5", optional = true }
+delog = "0.1.1"
+heapless = "0.6"
+interchange = "0.2.0"
+nb = "1"
+rtt-target = { version = "0.3", optional = true, features = ["cortex-m"] }
+usb-device = "0.2.3"
+# usbd-hid = { version = "0.4.5", optional = true }
+usbd-serial = "0.1.0"
+
+apdu-dispatch = { git = "https://github.com/solokeys/apdu-dispatch", branch = "main" }
+ctap-types = { git = "https://github.com/solokeys/ctap-types", branch = "main" }
+fido-authenticator = { git = "https://github.com/solokeys/fido-authenticator", branch = "main", optional = true }
+oath-authenticator = { git = "https://github.com/trussed-dev/oath-authenticator", branch = "main", features = ["apdu-dispatch"], optional = true }
+piv-authenticator = { git = "https://github.com/solokeys/piv-authenticator", branch = "main", features = ["apdu-dispatch"], optional = true }
+trussed = { git = "https://github.com/trussed-dev/trussed", branch = "main" }
+
+# board
+board = { path = "board" }
+
+# components
+dispatch-fido = {path = "../../solo2/components/dispatch-fido"}
+ndef-app = { path = "../../solo2/components/ndef-app", optional = true }
+admin-app = { path = "../../solo2/components/admin-app", optional = true }
+# NB: when using this app, need to raise trussed/clients-5
+provisioner-app = { path = "../../solo2/components/provisioner-app", optional = true }
+c-stubs = { path = "../../solo2/components/c-stubs" }
+fm11nc08 = {path = "../../solo2/components/fm11nc08"}
+ctaphid-dispatch = {path = "../../solo2/components/ctaphid-dispatch"}
+nfc-device = {path = "../../solo2/components/nfc-device"}
+usbd-ccid = { path = "../../solo2/components/usbd-ccid" }
+usbd-ctaphid = { path = "../../solo2/components/usbd-ctaphid" }
+
+
+# panic
+panic-halt = "0.2.0"
+# panic-semihosting = "0.5.6"
+
+# storage
+littlefs2 = "0.2.2"
+
+[features]
+default = ["admin-app", "fido-authenticator", "ndef-app", "oath-authenticator", "piv-authenticator", "trussed/clients-4"]
+
+develop = ["no-encrypted-storage", "no-buttons", "no-reset-time-window", "trussed/clients-4"]
+develop-provisioner = ["no-encrypted-storage", "no-buttons", "no-reset-time-window", "provisioner-app", "trussed/clients-5"]
+
+# Do not use encryption for the filesystem
+no-encrypted-storage = []
+
+# Check for undefined flash and write to determined value (for prince provisioning)
+write-undefined-flash = []
+
+# Use to auto-succeed every user presence check
+no-buttons = ["board/no-buttons"]
+
+# Allow resetting FIDO authenticator (and possibly others) even after 10s uptime
+no-reset-time-window = ["fido-authenticator/disable-reset-time-window"]
+
+# Format filesystem anyway
+format-filesystem = []
+
+board-lpcxpresso55 = ["board/board-lpcxpresso55"]
+board-okdoe1 = ["board/board-okdoe1", "board-lpcxpresso55", "usbfs-peripheral"]
+board-solo2 = ["board/board-solo2"]
+
+log-rtt = ["rtt-target"]
+log-semihosting = ["cortex-m-semihosting"]
+log-serial = []
+
+highspeed = []
+usbfs-peripheral = []
+serial = []
+# Reconfigure the NFC chip in any case
+reconfigure-nfc = []
+no-clock-controller = ["board/no-clock-controller"]
+enable-clock-controller-signal-pin = ["board/enable-clock-controller-signal-pin"]
+# very-twitchy-mouse = ["usbd-hid"]
+
+log-all = []
+log-none = []
+log-info = []
+log-debug = []
+log-warn = []
+log-error = []
+
+# patch dependencies like so to test local changes
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "z"
+incremental = false
+debug = true
+
+# Speed up crypto packages
+[profile.release.package.salty]
+opt-level = 2
+
+# TODO: see which if any settings are best for p256-cortex-m4
+# [profile.release.package.nisty]
+# opt-level = 2

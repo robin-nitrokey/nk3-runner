@@ -1,0 +1,11 @@
+[target.'cfg(all(target_arch = "arm", target_os = "none"))']
+runner = "arm-none-eabi-gdb -q -x jlink.gdb"
+rustflags = [
+  "-C", "linker=flip-link",
+  "-C", "link-arg=-Tlink.x",
+  "-C", "llvm-args=--enable-machine-outliner=never",
+  # "-Dwarnings",
+]
+
+[build]
+target = "thumbv8m.main-none-eabi"
